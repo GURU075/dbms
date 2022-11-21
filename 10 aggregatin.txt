@@ -1,0 +1,24 @@
+
+db.Student.insert({name:"Maddy",class:"TE-B",Address:"Baramati",age:20,fees:1000})
+
+db.Student.insert({name:"Nandu",class:"TE-C",Address:"Baramati",age:20,fees:2000})
+
+db.Student.insert({name:"Ganesh",class:"TE-A",Address:"Akluj",age:21,fees:5000})
+
+db.Student.insert({name:"Ishant",class:"TE-A",Address:"Camp",age:21,fees:6000})
+
+db.Student.insert({name:"Guru",class:"TE-B",Address:"Camp",age:19,fees:7000})
+
+
+
+db.student.aggregate([{$match : {class : TE}}, {$count : "total no. of students in class TE"}])
+
+db.student.aggregate( [ { $group : { _id : "$class", Max_Age : { $max : " $age "} } } ] )
+
+db.student.aggregate( [ {$match : { age : {$gt :20 } } } ] )
+
+db.student.aggregate( [ {$sort : { age : 1 } } ] )
+
+db.student.createIndex( { name :1 } )
+db.student.getIndexes()
+
