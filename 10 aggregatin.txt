@@ -12,7 +12,7 @@ db.Student.insert({name:"Guru",class:"TE-B",Address:"Camp",age:19,fees:7000})
 
 
 db.Student.aggregate([{$match : {class : "TE-A"}}, {$count : "total no of Students in class TE"}])
-
+db.students.aggregate([{$group: {_id:"$class", total_st: {$sum:1}, max_age:{$max:"$age"} } }])
 db.Student.aggregate( [ { $group : { _id : "$class", Max_Age : { $max : "$age"} } } ] )
 
 db.Student.aggregate( [ {$match : { age : {$gt :20 } } } ] )
